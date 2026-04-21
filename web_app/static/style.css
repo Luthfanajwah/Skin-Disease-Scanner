@@ -1,0 +1,265 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1100px;
+    width: 100%;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    padding: 30px;
+}
+
+h1 {
+    font-size: 32px;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #64748b;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #64748b;
+    border-radius: 40px;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background: #3b82f6;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Layout dua kolom */
+.main-panel {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.input-panel {
+    flex: 1;
+    min-width: 300px;
+}
+
+.result-panel {
+    flex: 1;
+    min-width: 300px;
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+/* Upload area */
+.upload-area {
+    text-align: center;
+    padding: 20px 0;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-label {
+    display: inline-block;
+    background: #eef2ff;
+    color: #3b82f6;
+    padding: 16px 32px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    border: 1px dashed #3b82f6;
+}
+
+.upload-label:hover {
+    background: #dbeafe;
+}
+
+#preview-container {
+    margin: 20px 0;
+}
+
+#preview {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.btn:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+    background: #2563eb;
+}
+
+/* Camera */
+.camera-container {
+    text-align: center;
+}
+
+#video {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 16px;
+    background: #0f172a;
+    margin-bottom: 15px;
+}
+
+#canvas {
+    display: none;
+    width: 100%;
+    border-radius: 16px;
+}
+
+/* Result panel */
+.result-card h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+.result-main {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.class-name {
+    font-size: 36px;
+    font-weight: 700;
+    color: #0f172a;
+    text-transform: capitalize;
+}
+
+.confidence {
+    font-size: 20px;
+    color: #10b981;
+    font-weight: 600;
+}
+
+.prob-bars {
+    margin: 25px 0;
+}
+
+.prob-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.prob-label {
+    width: 130px;
+    font-size: 14px;
+    color: #334155;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.prob-bar-container {
+    flex: 1;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    margin: 0 12px;
+    overflow: hidden;
+}
+
+.prob-bar {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.prob-value {
+    width: 55px;
+    text-align: right;
+    font-size: 14px;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+#gradcam-container {
+    margin-top: 25px;
+}
+
+#gradcam-container h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+#gradcam-img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Responsive: jika layar kecil, stack */
+@media (max-width: 700px) {
+    .main-panel {
+        flex-direction: column;
+    }
+    .container {
+        padding: 20px;
+    }
+}
