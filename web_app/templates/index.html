@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Disease Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🧴 Skin Disease Scanner</h1>
+        <p class="subtitle">Real‑time classification with MobileNetV2</p>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('upload')">📤 Upload Image</button>
+            <button class="tab-btn" onclick="switchTab('live')">📸 Live Camera</button>
+        </div>
+
+        <!-- Layout Utama Dua Kolom -->
+        <div class="main-panel">
+            <!-- Kolom Kiri: Input -->
+            <div class="input-panel">
+                <!-- Tab Upload -->
+                <div id="upload-tab" class="tab-content active">
+                    <div class="upload-area">
+                        <input type="file" id="file-input" accept="image/*" capture="environment">
+                        <label for="file-input" class="upload-label">📁 Choose Image or Take Photo</label>
+                        <div id="preview-container" style="display: none;">
+                            <img id="preview" src="" alt="Preview">
+                        </div>
+                        <button id="predict-btn" class="btn" disabled>Predict</button>
+                    </div>
+                </div>
+
+                <!-- Tab Live Camera -->
+                <div id="live-tab" class="tab-content">
+                    <div class="camera-container">
+                        <video id="video" autoplay playsinline></video>
+                        <canvas id="canvas"></canvas>
+                        <button id="capture-btn" class="btn">Capture & Predict</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Hasil -->
+            <div class="result-panel">
+                <div id="result" class="result-card" style="display: none;">
+                    <h2>🔍 Prediction Result</h2>
+                    <div class="result-main">
+                        <span id="pred-class" class="class-name"></span>
+                        <span id="pred-conf" class="confidence"></span>
+                    </div>
+                    <div id="prob-bars" class="prob-bars"></div>
+                    <div id="gradcam-container" style="display: none;">
+                        <h3>🔥 Grad‑CAM Heatmap</h3>
+                        <img id="gradcam-img" src="" alt="Grad-CAM">
+                    </div>
+                </div>
+                <div id="placeholder" style="color: #94a3b8; text-align: center; padding: 40px 20px;">
+                    👆 Upload or capture an image to see prediction
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Pass class names dari Flask ke JavaScript
+        const CLASS_NAMES = {{ class_names|tojson }};
+    </script>
+</body>
+</html>
