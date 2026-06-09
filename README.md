@@ -4,6 +4,8 @@ Skin Disease Scanner adalah aplikasi web real‑time yang digunakan untuk mengkl
 
 Dibangun dengan Flask, PyTorch, dan Tailwind CSS, aplikasi ini mendukung perbandingan multi‑model, validasi label, dan analisis fokus model (ROI bounding box + heatmap) untuk membantu mengidentifikasi indikasi penyakit kulit secara interaktif.
 
+---
+
 🖥️ Fitur Utama
 
 | Fitur | Deskripsi |
@@ -16,6 +18,7 @@ Dibangun dengan Flask, PyTorch, dan Tailwind CSS, aplikasi ini mendukung perband
 | ✅ Expected Label | Jika diagnosis/label sebenarnya diketahui, hasil prediksi akan di‑highlight hijau (benar) atau merah (salah). |
 | ⚖️ Statistik Akurasi Bulk | Menghitung persentase benar/salah Model A vs Model B saat *expected label* diisi. |
 
+---
 🧠 Model yang Tersedia
 
 *(On prosess input - coming soon)*
@@ -31,6 +34,8 @@ Aplikasi secara otomatis memuat semua model dari folder `models/`.
 
 ⭐ = Model dengan akurasi tertinggi / model unggulan.
 
+---
+
 🏗️ Struktur Proyek
 
 ```text
@@ -44,30 +49,69 @@ Skin-Disease-Scanner/
 └── README.md
 ```
 
-Cara Menjalankan:
-1. Clone RepositoriBashgit clone [https://github.com/Luthfanajwah/Skin-Disease-Scanner.git](https://github.com/Luthfanajwah/Skin-Disease-Scanner.git)
-   
-```cd Skin-Disease-Scanner```
-*(Catatan: Sesuaikan perintah cd di atas jika folder aplikasi web berada di dalam sub-folder tertentu, misalnya cd Skin-Disease-Scanner/web_app)*
-2. Install Dependensi
-```Bashpip install flask torch torchvision pillow opencv-python matplotlib scikit-learn```
-3. Jalankan Server
-```Bashpython app.py```
-4. Buka browser dan akses ke 
-```http://127.0.0.1:5050``` (atau alamat IP lokal yang muncul di terminal Anda). 
+---
 
-📊 Performa Model
-*(On prosess input - coming soon)*
+> **Catatan:** Script training (`pipeline_preprocess_dl.py`) dan dataset **tidak** disertakan dalam repositori ini.  
+> Repositori ini hanya berisi aplikasi web siap‑pakai.
 
-ModelDatasetPreprocessingTest AccPenyakit A (F1)Penyakit B (F1)Waktu TrainingModel A ⭐V1Preprocess 100.00%0.000.0000 menitModel BV1Preprocess 200.00%0.000.0000 menit
+---
 
-⭐ Model unggulan: [Isi Nama Model Terbaik.pth]Akurasi tertinggi (00.00%) dengan performa deteksi lesi kulit paling stabil.Arsitektur efisien dan cocok untuk deployment real-time.
+## 🚀 Cara Menjalankan
 
-🔍 Temuan Utama (Template - Silakan Sesuaikan)Isi dengan analisis perbandingan antar model Anda di sini.Contoh: Arsitektur X lebih sensitif terhadap tekstur kulit, sedangkan arsitektur Y lebih baik dalam mendeteksi perubahan warna.Contoh: Preprocessing tertentu membantu model mengabaikan rambut halus pada sampel kulit.
+### 1. Clone Repositori
+```bash
+git clone https://github.com/Luthfanajwah/Undertone_Scanner.git
+cd Undertone_Scanner/web_app
+```
 
-🔧 API EndpointsMethodRouteDeskripsiGET/Halaman utama aplikasi web.GET/get_modelsMendapatkan daftar model penyakit kulit yang tersedia di folder models/.POST/predict_uploadPrediksi gambar kulit yang di‑upload (multipart form).POST/predict_framePrediksi frame kamera real-time (base64 JSON).POST/predict_bulkPrediksi banyak gambar sampel kulit sekaligus.POST/saliencyMenghasilkan heatmap saliency map + ROI pada area kulit yang terindikasi.GET/video_feedStreaming webcam dengan overlay prediksi penyakit kulit.
+### 2. Install Dependensi
+```bash
+pip install flask torch torchvision pillow opencv-python matplotlib scikit-learn
+```
 
-🛠️ Teknologi yang DigunakanBackend
-Flask, PyTorch, Torchvision, OpenCV, PILFrontend: Tailwind CSS (CDN), Material Symbols, Vanilla JavaScriptModel 
-Klasifikasi: Deep Learning / Transfer Learning (PyTorch)
-Visualisasi & Interpretabilitas: Matplotlib (Colormap), Saliency Map, Bounding Box ROI
+### 3. Jalankan Server
+```bash
+python app.py
+```
+
+Buka browser ke **http://127.0.0.1:5050** (atau alamat IP lokal yang muncul di terminal).
+
+Aplikasi akan otomatis memuat semua model `.pth` dari folder `models/`.
+
+---
+
+## 📊 Performa Model (Semua Eksperimen)
+
+Berikut hasil evaluasi lengkap pada **test set** masing‑masing versi dataset.
+
+| Model | Dataset | Preprocessing | Test Acc | Cool F1 | Neutral F1 | Warm F1 | Waktu Training |
+|-------|---------|---------------|----------|---------|------------|---------|----------------|
+*(coming soon)*
+
+
+⭐ **Model unggulan:** `Mobile Net`  
+- Akurasi tertinggi () dengan waktu training tercepat (  
+- F1 Warm tertinggi ()  
+
+### 🔍 Temuan Utama
+
+---
+
+## 🔧 API Endpoints
+
+| Method | Route | Deskripsi |
+|--------|-------|-----------|
+| `GET` | `/` | Halaman utama |
+| `GET` | `/get_models` | Mendapatkan daftar model yang tersedia |
+| `POST` | `/predict_upload` | Prediksi gambar yang di‑upload (multipart form) |
+| `POST` | `/predict_frame` | Prediksi frame kamera (base64 JSON) |
+| `GET` | `/video_feed` | Streaming webcam dengan overlay prediksi |
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+- **Backend:** Flask, PyTorch, Torchvision, OpenCV, PIL
+- **Frontend:** Material Symbols, Vanilla JavaScript
+- **Model:** MobileNetV2
+- **Visualisasi:** Matplotlib (colormap), 
