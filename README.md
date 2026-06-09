@@ -2,7 +2,7 @@
 
 Skin Disease Scanner adalah aplikasi web real‑time yang digunakan untuk mengklasifikasikan berbagai jenis penyakit kulit berdasarkan gambar yang diunggah atau ditangkap langsung melalui kamera. Aplikasi ini memanfaatkan teknologi deep learning dan saliency map untuk memberikan interpretasi visual mengenai area kulit yang menjadi fokus model dalam melakukan klasifikasi.
 
-Dibangun dengan Flask, PyTorch, dan Tailwind CSS, aplikasi ini mendukung perbandingan multi‑model, validasi label, dan analisis fokus model (ROI bounding box + heatmap) untuk membantu mengidentifikasi indikasi penyakit kulit secara interaktif.
+Dibangun dengan Flask dan PyTorch aplikasi ini mendukung perbandingan multi‑model, validasi label, dan analisis fokus model (heatmap) untuk membantu mengidentifikasi indikasi penyakit kulit secara interaktif.
 
 ---
 
@@ -12,11 +12,8 @@ Dibangun dengan Flask, PyTorch, dan Tailwind CSS, aplikasi ini mendukung perband
 | :--- | :--- |
 | 📤 Upload Gambar | Prediksi dua model sekaligus, bandingkan hasil klasifikasi penyakit kulit secara berdampingan. |
 | 📸 Live Camera | Tangkap gambar kondisi kulit dari webcam, langsung dapatkan hasil prediksi secara real‑time. |
-| 📚 Bulk Upload | Proses puluhan gambar sekaligus, lihat hasil dalam grid beserta statistik akurasi per model. |
-| 🧠 Multi‑Model | Muat otomatis semua model `.pth` dalam folder `models/`, pilih dua model penyakit kulit untuk dibandingkan. |
-| 🔬 Advanced Result (Saliency Map) | Lihat heatmap fokus model pada lesi/gejala kulit, bounding box ROI, dan penjelasan; kontrol interaktif untuk threshold, colormap, dan warna kotak. |
-| ✅ Expected Label | Jika diagnosis/label sebenarnya diketahui, hasil prediksi akan di‑highlight hijau (benar) atau merah (salah). |
-| ⚖️ Statistik Akurasi Bulk | Menghitung persentase benar/salah Model A vs Model B saat *expected label* diisi. |
+| 🔬 Advanced Result (Saliency Map) | GRADCAM heatmap 
+| ✅ Expected Label | Jika diagnosis/label sebenarnya diketahui, makan akan ada persentase besar kemungkinan prediksi yang benar |
 
 ---
 🧠 Model yang Tersedia
