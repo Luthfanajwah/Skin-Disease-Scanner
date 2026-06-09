@@ -1,4 +1,8 @@
-🎯 Skin Disease Scanner — combining computer vision and explainability for real‑time skin analysis.
+# 🎯 Skin Disease Scanner — combining computer vision and explainability for real‑time skin analysis.
+---
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
+![Flask](https://img.shields.io/badge/flask-3.0-green.svg)
+![PyTorch](https://img.shields.io/badge/pytorch-2.2-red.svg)
 
 Skin Disease Scanner adalah aplikasi web real‑time yang digunakan untuk mengklasifikasikan berbagai jenis penyakit kulit berdasarkan gambar yang diunggah atau ditangkap langsung melalui kamera. Aplikasi ini memanfaatkan teknologi deep learning dan saliency map untuk memberikan interpretasi visual mengenai area kulit yang menjadi fokus model dalam melakukan klasifikasi.
 
